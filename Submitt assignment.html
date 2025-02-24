@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS - Submit Assignment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            padding: 2rem;
+            background: #f5f6fa;
+        }
+
+        .assignment-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .assignment-header {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .assignment-header h1 {
+            color: #1a73e8;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .assignment-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .detail-item {
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .detail-item h3 {
+            color: #5f6368;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-item p {
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        .submission-form {
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #5f6368;
+            font-weight: bold;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            height: 150px;
+            resize: vertical;
+        }
+
+        .file-upload {
+            border: 2px dashed #dadce0;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .file-upload input[type="file"] {
+            display: none;
+        }
+
+        .upload-label {
+            color: #1a73e8;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+
+        .upload-label:hover {
+            background: #e8f0fe;
+        }
+
+        .submitted-files {
+            margin-top: 1rem;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem;
+            background: #f8f9fa;
+            margin-bottom: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .submit-button {
+            padding: 0.8rem 2rem;
+            background: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .cancel-button {
+            padding: 0.8rem 2rem;
+            background: #f0f2f5;
+            color: #5f6368;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background: #1557b0;
+        }
+
+        .cancel-button:hover {
+            background: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="assignment-container">
+        <div class="assignment-header">
+            <h1>Submit Assignment</h1>
+            <label>select course Name</label>
+            <select required>
+                <option valiue="wireless">wireless</option>
+                <option value="Fandamental web develipment">Fandamental web development</option>
+                <option value="business">business</option>
+            </select>
+        </div>
+
+        <div class="assignment-details">
+            <div class="detail-item">
+                <label for="dob">date of birth</label>
+                <input type="date" id="dob" name="dob" reqiured>
+            </div>
+            <div class="detail-item">
+                <h3>Status</h3>
+                <p style="color: #1a73e8;">Open for Submission</p>
+            </div>
+            <div class="detail-item">
+                <h3>Maximum Score</h3>
+                <p>100 points</p>
+            </div>
+            <div class="detail-item">
+                <h3>Your Submissions</h3>
+                <p>0 (First attempt)</p>
+            </div>
+        </div>
+
+        <form class="submission-form" action="#" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="student-name">Student Name</label>
+                <input type="text" id="student-name" style="button"></input>
+            </div>
+
+            <div class="form-group">
+                <label>Submission Type</label>
+                <select required>
+                    <option value="">Select Submission Type</option>
+                    <option value="file">File Upload</option>
+                    <option value="text">Text Entry</option>
+                    <option value="url">URL Submission</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Add Submission Comments</label>
+                <textarea placeholder="Add any comments for the instructor..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Upload Files</label>
+                <div class="file-upload">
+                    <input type="file" id="file-input" multiple accept=".pdf,.doc,.docx,.zip">
+                    <label for="file-input" class="upload-label">Choose Files or Drag and Drop</label>
+                    <p>Accepted formats: PDF, Word, ZIP (Max size: 50MB)</p>
+                    <div class="submitted-files">
+                        <!-- Files will be listed here after selection -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button type="submit" class="submit-button">Submit Assignment</button>
+                <button type="button" class="cancel-button">Cancel</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

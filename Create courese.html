@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS - Create Course</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            padding: 2rem;
+            background: #f5f6fa;
+        }
+
+        .create-course-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .create-header {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .create-header h1 {
+            color: hwb(215 12% 19%);
+            font-size: 1.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #5f6368;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #1a73e8;
+            box-shadow: 0 0 0 2px #e8f0fe;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .thumbnail-upload {
+            border: 2px dashed #dadce0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .thumbnail-upload p {
+            color: #5f6368;
+            margin-top: 0.5rem;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .create-button {
+            padding: 0.8rem 2rem;
+            background: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .cancel-button {
+            padding: 0.8rem 2rem;
+            background: #f0f2f5;
+            color: #5f6368;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .create-button:hover {
+            background: #1557b0;
+        }
+
+        .cancel-button:hover {
+            background: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div style="background-color: rgb(226, 216, 68);" class="create-course-container">
+        <div class="create-header">
+            <h1>Create New Course</h1>
+            <p>Start building your learning content</p>
+        </div>
+
+        <form action="#" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="course-title">Course Title</label>
+                <input type="text" id="course-title" name="course-title" required>
+            </div>
+
+            <div class="form-group">
+                <label for="course-description">Course Description</label>
+                <textarea id="course-description" name="course-description" required></textarea>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label for="course-category">Category</label>
+                    <select id="course-category" name="course-category" required>
+                        <option value="">Select Category</option>
+                        <option value="web-development">Web Development</option>
+                        <option value="data-science">Data Science</option>
+                        <option value="mobile-development">Mobile Development</option>
+                        <option value="business">Business</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="course-level">Difficulty Level</label>
+                    <select id="course-level" name="course-level" required>
+                        <option value="">Select Level</option>
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label for="course-duration">Duration (weeks)</label>
+                    <input type="number" id="course-duration" name="course-duration" min="1" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="course-price">Price ($)</label>
+                    <input type="number" id="course-price" name="course-price" min="0" step="0.01" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Course Thumbnail</label>
+                <div class="thumbnail-upload">
+                    <input type="file" id="thumbnail" name="thumbnail" accept="image/*" required>
+                    <p>Recommended size: 1280x720 pixels</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Course Visibility</label>
+                <div class="radio-group">
+                    <input type="radio" id="draft" name="course-status" value="draft" checked>
+                    <label for="draft" style="display: inline-block; margin-right: 1rem;">Draft</label>
+                    
+                    <input type="radio" id="published" name="course-status" value="published">
+                    <label for="published" style="display: inline-block;">Publish Now</label>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button type="submit" class="create-button">Create Course</button>
+                <button type="button" class="cancel-button">Cancel</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
